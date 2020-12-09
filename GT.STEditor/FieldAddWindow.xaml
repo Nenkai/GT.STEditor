@@ -1,0 +1,22 @@
+﻿<Window x:Class="GTSTEditor.FieldAddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GTSTEditor"
+        mc:Ignorable="d"
+        Title="FieldAddWindow" Height="162.786" Width="443.555">
+    <Grid Background="LightGray" Margin="0,0,0,-3">
+        <Label Content="Field Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="74"/>
+        <TextBox Name="tb_FieldName" Margin="89,14,10,0" Height="22" VerticalAlignment="Top"/>
+
+        <ComboBox Name="cb_FieldType" Margin="89,45,10,0" Height="22" VerticalAlignment="Top" SelectionChanged="cb_FieldType_SelectionChanged" />
+        <Label Content="Field Type" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="74"/>
+
+        <Label Content="Value" HorizontalAlignment="Left" Margin="10,0,0,37" VerticalAlignment="Bottom" Width="74"/>
+        <TextBox Name="tb_Value" Margin="89,0,10,36" Height="22" VerticalAlignment="Bottom"/>
+        <Button Content="Add" Margin="0,0,10,10" VerticalAlignment="Bottom" Height="21" Click="Button_Click" HorizontalAlignment="Right" Width="85"/>
+
+
+    </Grid>
+</Window>

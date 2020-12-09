@@ -1,0 +1,83 @@
+﻿<Window x:Class="GTSTEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:GTSTEditor"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+    <DockPanel LastChildFill="True">
+        <Menu DockPanel.Dock="Top" >
+            <MenuItem Header="_File" Height="24">
+                <MenuItem Header="_Open ST File" Click="OpenFile_Click" />
+                <MenuItem Name="menuItem_Save" Header="_Save As.." IsEnabled="False" Click="SaveFile_Click"/>
+                <Separator />
+                <MenuItem Header="_Exit" />
+            </MenuItem>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom" Height="24">
+            <StatusBarItem>
+                <TextBlock Name="tb_Status">Ready</TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+        <DockPanel>
+            <TreeView DockPanel.Dock="Left" Width="420" Grid.Column="0" Name="tv_STListing" SelectedItemChanged="tv_STListing_SelectedItemChanged">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate DataType="{x:Type local:STListing}" ItemsSource="{Binding Items}">
+                        <TextBlock Text="{Binding Name}" />
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+                <TreeView.ContextMenu>
+                    <ContextMenu Name="ContextMenu">
+                        <MenuItem Name="AddItem" Header="Add" Click="AddItem_Click"></MenuItem>
+                        <Separator/>
+                        <MenuItem Name="DeleteItem" Header="Delete"  Click="DeleteItem_Click"></MenuItem>
+
+                    </ContextMenu>
+                </TreeView.ContextMenu>
+            </TreeView>
+
+            <Grid DockPanel.Dock="Top" Grid.Column="1" Background="LightGray" >
+                <Label Content="Type:" Margin="10,10,0,0" HorizontalAlignment="Left"  Width="Auto" Height="Auto" VerticalAlignment="Top"/>
+                <Label Name="paramType" Content="N/A" Margin="52,10,10,0" Height="Auto" HorizontalContentAlignment="Right" VerticalAlignment="Top" FontWeight="Bold"/>
+
+                <Label Content="Byte Value:" Margin="10,41,0,0" HorizontalAlignment="Left"  Width="Auto" Height="Auto" VerticalAlignment="Top"/>
+                <xctk:ByteUpDown IsEnabled="False" Name="param_Byte" Margin="140,46,7,0" Height="20" ValueChanged="param_Byte_ValueChanged" VerticalAlignment="Top"/>
+                <Label Content="Signed Byte Value:" Margin="10,72,0,0" HorizontalAlignment="Left"  Width="Auto" Height="26" VerticalAlignment="Top"/>
+                <xctk:SByteUpDown IsEnabled="False" Name="param_SByte" Margin="140,77,10,0" Height="20" ValueChanged="param_SByte_ValueChanged" VerticalAlignment="Top"/>
+                <Label Content="Bool Value:" Margin="10,103,0,0" HorizontalAlignment="Left"  Width="Auto" Height="26" VerticalAlignment="Top"/>
+
+                <Label Content="Integer Value:" Margin="10,134,0,0" HorizontalAlignment="Left"  Width="Auto" Height="28" VerticalAlignment="Top"/>
+                <xctk:IntegerUpDown IsEnabled="False" Name="param_Integer" Margin="140,138,10,0" Height="20" ValueChanged="param_Integer_ValueChanged" VerticalAlignment="Top"/>
+                <Label Content="Un. Integer Value:" Margin="10,165,0,0" HorizontalAlignment="Left"  Width="Auto" Height="26" VerticalAlignment="Top"/>
+                <xctk:UIntegerUpDown IsEnabled="False" Name="param_UInteger" Margin="140,170,10,0" Height="20" ValueChanged="param_UInteger_ValueChanged" VerticalAlignment="Top"/>
+
+                <Label Content="Float Value:" Margin="10,196,0,0" HorizontalAlignment="Left" Width="Auto"  VerticalAlignment="Top"/>
+                <xctk:SingleUpDown IsEnabled="False" Name="param_Single" Margin="140,201,10,0" Height="20" ValueChanged="param_Single_ValueChanged" VerticalAlignment="Top"/>
+
+                <Label Content="Double Value:" Margin="10,227,0,0" HorizontalAlignment="Left" Width="Auto" Height="Auto" VerticalAlignment="Top"/>
+                <xctk:DoubleUpDown IsEnabled="False" Name="param_Double" Margin="140,232,10,0" Height="20" VerticalAlignment="Top"/>
+                <CheckBox IsEnabled="False" Name="param_Bool" Content="Enabled" HorizontalAlignment="Right" Margin="0,109,10,0" Height="20" VerticalAlignment="Top" />
+
+                <Label Content="Long Value:" Margin="10,258,0,0" HorizontalAlignment="Left" Width="Auto" Height="Auto" VerticalAlignment="Top"/>
+                <xctk:LongUpDown IsEnabled="False" Name="param_Long" Margin="140,261,10,0" Height="20" ValueChanged="param_Long_ValueChanged" VerticalAlignment="Top"/>
+
+                <Label Content="Unsigned Long Value:" Margin="10,286,0,0" HorizontalAlignment="Left" Width="Auto" Height="Auto" VerticalAlignment="Top"/>
+                <xctk:ULongUpDown IsEnabled="False" Name="param_ULong" Margin="140,292,10,0" Height="20" ValueChanged="param_ULong_ValueChanged" VerticalAlignment="Top"/>
+
+                <Label Content="Short Value:" Margin="10,317,0,0" HorizontalAlignment="Left" Width="125" Height="Auto" VerticalAlignment="Top"/>
+                <xctk:ShortUpDown IsEnabled="False" Name="param_Short" Margin="140,321,10,0" Height="20" ValueChanged="param_Short_ValueChanged" VerticalAlignment="Top"/>
+
+                <Label Content="String Value:" Margin="10,347,0,0" HorizontalAlignment="Left" Width="125" Height="Auto" VerticalAlignment="Top"/>
+                <TextBox IsEnabled="False" Name="param_String" Margin="140,349,10,0" Height="20" TextChanged="param_String_TextChanged" VerticalAlignment="Top"/>
+
+                <Grid Background="White" Height="143" VerticalAlignment="Bottom">
+                    <Label Name="parameterName" Content="N/A" Margin="10,0,10,107" FontWeight="Bold" Height="26" VerticalAlignment="Bottom"/>
+                    <Separator Height="13" Margin="10,36,10,0" VerticalAlignment="Top"/>
+                    <TextBlock Name="parameterDescription" Margin="10,0,10,10" TextWrapping="Wrap" Text="N/A" Height="79" VerticalAlignment="Bottom"/>
+                </Grid>
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</Window>
